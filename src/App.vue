@@ -1,45 +1,54 @@
 <template>
   <v-app>
+    
     <v-app-bar
       app
       color="primary"
       dark
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
+      <span class="mr-2">PIBOT</span>
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+        @click="connect()"
       >
-        <span class="mr-2">Latest Release</span>
+        <span class="mr-2">Connect to broker</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
-    <v-content>
-      <HelloWorld/>
-    </v-content>
+    <!-- Sizes your content based upon application components -->
+    <v-main>
+
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <v-row no-gutters>
+          <v-col cols="8">
+            <v-card
+            class="ma-3 pa-6"
+            outlined
+            tile
+            >
+              <HelloWorld/>
+            </v-card>
+          </v-col>
+          <v-col cols="4">
+            <v-card
+            class="ma-3 pa-6"
+            outlined
+            tile
+            >
+              Plop
+            </v-card>
+          </v-col>
+        </v-row>
+        
+      </v-container>
+    </v-main>
+
+    <v-footer app>
+      <!-- -->
+    </v-footer>
   </v-app>
 </template>
 
@@ -52,9 +61,16 @@ export default {
   components: {
     HelloWorld,
   },
-
+  created: function() {
+    
+  },
   data: () => ({
     //
   }),
+  methods: {
+    connect () {
+      this.$store.commit('connectToBroker')
+    }
+  }
 };
 </script>
